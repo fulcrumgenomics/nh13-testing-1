@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  setup-latch-job:
+    runs-on: ubuntu-latest
+    name: A job to setup latch
+    environment: main
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: pip
+      - id: latch 
+        uses: fulcrumgenomics/setup-latch-action@v1
+        with:
+          latch-workspace: ${{ secrets.LATCH_WORKSPACE }}
+          latch-token: ${{ secrets.LATCH_TOKEN }}
+      - run: echo latch version ${{ steps.latch.outputs.latch-version }}
+        shell: bash
