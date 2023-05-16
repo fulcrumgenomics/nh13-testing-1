@@ -12,7 +12,7 @@ jobs:
           python-version: '3.10'
           cache: pip
       - id: latch 
-        uses: fulcrumgenomics/setup-latch-action@v1
+        uses: fulcrumgenomics/setup-latch-action@ea1aede6e7f42ab2639e21b97aff81a6bc252e79
         with:
           latch-workspace: ${{ secrets.LATCH_WORKSPACE }}
           latch-token: ${{ secrets.LATCH_TOKEN }}
